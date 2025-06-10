@@ -151,7 +151,7 @@ app.get('/', (req, res) => {
         button.textContent = 'Uploading...';
         
         const formData = new FormData(form);
-        const endpoint = form.id === 'musicForm' ? '/audio' : '/videos';
+        const endpoint = form.id === 'musicForm' ? '/upload/music' : '/upload/video';
         try {
             const res = await fetch(endpoint, {
                 method: 'POST',
