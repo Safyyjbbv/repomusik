@@ -23,7 +23,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: (req, file) => {
     // Tentukan folder di Cloudinary berdasarkan fieldname ('music' atau 'video')
-    const folder = file.fieldname === 'audio' ? 'audio' : 'videos';
+    const folder = file.fieldname === 'music' ? 'music' : 'videos';
     const safeName = file.originalname.replace(/\s+/g, '_').replace(/[^a-zA-Z0-9._-]/g, '');
     return {
       folder: folder,
@@ -151,7 +151,7 @@ app.get('/', (req, res) => {
         button.textContent = 'Uploading...';
         
         const formData = new FormData(form);
-        const endpoint = form.id === 'musicForm' ? '/upload/music' : '/upload/video';
+        const endpoint = form.id === 'musicForm' ? '/audio' : '/videos';
         try {
             const res = await fetch(endpoint, {
                 method: 'POST',
